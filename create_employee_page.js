@@ -158,7 +158,7 @@ async function addEmployees(add, answers) {
     let html = render(employees);
     //console.log(html); //FOR DEBUG
 
-    return writeFileAsync("./output/index.html", html);
+    return writeFileAsync("./output/team.html", html);
 
 
 }
