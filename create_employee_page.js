@@ -11,27 +11,73 @@ let employees = [];
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
+const confirmNameValidator = async (input) => {
+    if (input.trim() == "") {
+       return 'You must enter a name';
+    }
+    return true;
+ };
+
+ const confirmIdValidator = async (input) => {
+    if (input.trim() == "") {
+       return 'You must enter an id';
+    }
+    return true;
+ };
+
+ const confirmEmailValidator = async (input) => {
+    if (input.trim() == "") {
+       return 'You must enter an email';
+    }
+    return true;
+ };
+
+ const confirmOfficeValidator = async (input) => {
+    if (input.trim() == "") {
+       return 'You must enter an office number';
+    }
+    return true;
+ };
+
+ const confirmGithubValidator = async (input) => {
+    if (input.trim() == "") {
+       return 'You must enter a github username';
+    }
+    return true;
+ };
+
+ const confirmSchoolValidator = async (input) => {
+    if (input.trim() == "") {
+       return 'You must enter a school';
+    }
+    return true;
+ };
+
 function promptManagerInfo() {
     return inquirer.prompt([
         {
         type: "input", //input, number, confirm, list, rawlist, expand, checkbox, password, editor
         name: "manager_name",
-        message: "Hello Manager! What is your name?" //</user_will_provide_github_username>
+        message: "Hello Manager! What is your name?", //</user_will_provide_github_username>
+        validate: confirmNameValidator
         },
         {
         type: "input",
         name: "manager_id",
-        message: "What is your id?"
+        message: "What is your id?",
+        validate: confirmIdValidator
         },
         {
         type: "input",
         name: "manager_email",
-        message: "What is your email?"
+        message: "What is your email?",
+        validate: confirmEmailValidator
         },
         {
         type: "input",
         name: "manager_office",
-        message: "What is your office number?" 
+        message: "What is your office number?" ,
+        validate: confirmOfficeValidator
         },
         {
         type: "list",
@@ -47,28 +93,32 @@ function promptEngineerInfo() {
         {
         type: "input", //input, number, confirm, list, rawlist, expand, checkbox, password, editor
         name: "engineer_name",
-        message: "What is the engineer's name?" 
+        message: "What is the engineer's name?", 
+        validate: confirmNameValidator
         },
         {
         type: "input", //input, number, confirm, list, rawlist, expand, checkbox, password, editor
         name: "engineer_id",
-        message: "What is the engineer's id?" 
+        message: "What is the engineer's id?",
+        validate: confirmIdValidator 
         },
         {
         type: "input",
         name: "engineer_email",
-        message: "What is the engineer's email?"
+        message: "What is the engineer's email?",
+        validate: confirmEmailValidator
         },
         {
         type: "input",
         name: "engineer_github_username",
-        message: "What is the engineer's github username?"
+        message: "What is the engineer's github username?",
+        validate: confirmGithubValidator
         },
         {
         type: "list",
         name: "add_employee",
         message: "Perfect! Would you like to add another employee?", 
-        choices: ['Yes','No'] //if no then render page
+        choices: ['Yes','No'] 
         }
     ]);
 }
@@ -78,28 +128,32 @@ function promptInternInfo() {
         {
         type: "input", //input, number, confirm, list, rawlist, expand, checkbox, password, editor
         name: "intern_name",
-        message: "What is the intern's name?" //</user_will_provide_github_username>
+        message: "What is the intern's name?",
+        validate: confirmNameValidator 
         },
         {
         type: "input", //input, number, confirm, list, rawlist, expand, checkbox, password, editor
         name: "intern_id",
-        message: "What is the intern's id?" 
+        message: "What is the intern's id?",
+        validate: confirmIdValidator 
         },
         {
         type: "input",
         name: "intern_email",
-        message: "What is the intern's email?"
+        message: "What is the intern's email?",
+        validate: confirmEmailValidator
         },
         {
         type: "input",
         name: "intern_school",
-        message: "What is the intern's school?"
+        message: "What is the intern's school?",
+        validate: confirmSchoolValidator
         },
         {
         type: "list",
         name: "add_employee",
         message: "Perfect! Would you like to add another employee?", 
-        choices: ['Yes','No'] //if no then render page
+        choices: ['Yes','No'] 
         }
     ]);
 }
