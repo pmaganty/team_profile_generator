@@ -1,0 +1,13 @@
+.team-heading {
+    color: white;
+    font-weight: bold;
+    background: rgb(49, 1, 49);
+}
+
+.card-header {
+background: rgb(243, 161, 243);
+}
+
+.team-area {
+    margin: auto;
+}
